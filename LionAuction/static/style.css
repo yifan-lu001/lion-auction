@@ -1,0 +1,33 @@
+#login-form input[type="password"],
+#login-form input[type="text"]{
+    width: 100%;
+    padding: 12px 36px 12px 12px;
+    box-sizing: border-box;
+}
+
+.default-container{
+    width: 400px;
+    position: relative;
+}
+
+.password-container{
+    width: 400px;
+    position: relative;
+}
+
+.fa-eye{
+    position: absolute;
+    top: 60%;
+    right: 4%;
+    cursor: pointer;
+    color: rgba(25,6,92,255);
+}
+
+.radio-buttons{
+    width: 420px;
+    position: relative;
+}
+
+#login-form input[type="radio"] {
+    margin-left: 10px;
+}

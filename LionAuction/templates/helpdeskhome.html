@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>LionAuction Home</title>
+    <link rel="icon" href="https://www.psu.edu/favicon.ico">
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- Changes the button color to match the theme -->
+    <style>
+        .btn-primary {
+            color: white;
+            background-color: rgba(25,6,92,255);
+        }
+    </style>
+</head>
+<body>
+<header class="marketplace-header">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: rgba(25,6,92,255);
+            paddin-bottom: 14px;
+        }
+
+        .topnav a {
+            float: left;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: rgba(25,6,92,255);
+        }
+
+        .topnav a.logo {
+            float: left;
+            padding: 0px;
+        }
+
+        .topnav a.logo:hover {
+            background-color: rgba(25,6,92,255);
+        }
+
+        .topnav input.submit {
+            background-color: rgba(25,6,92,255);
+            float: left;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav input.submit:hover {
+            background-color: #ddd;
+            color: rgba(25,6,92,255);
+        }
+    </style>
+    <div class="topnav">
+        <a href="/home" class="logo"><img src="static/LionAuctionLogoWhite.png" width="108" height="54"></a>
+        <form action="/browse" method="POST">
+            {% for parent_category, category_name in categories %}
+                <input type="submit" value="{{ category_name }}" name="category" class="submit">
+            {% endfor %}
+        </form>
+    </div>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .welcome {
+            overflow: hidden;
+            background-color: white;
+            padding: 14px 14px;
+        }
+    </style>
+    <div class="welcome">
+        <h4 style="color: rgba(25,6,92,255)" align="center">——Welcome back, {{ firstname }}!——</h4>
+    </div>
+</header>
+<style>
+            .account-settings .user-profile {
+                margin: 0 0 1rem 0;
+                padding-bottom: 1rem;
+                text-align: center;
+            }
+            .account-settings .user-profile .user-avatar {
+                margin: 0 0 1rem 0;
+            }
+            .account-settings .user-profile .user-avatar img {
+                width: 90px;
+                height: 90px;
+                -webkit-border-radius: 100px;
+                -moz-border-radius: 100px;
+                border-radius: 100px;
+            }
+            .account-settings .user-profile h5.user-name {
+                margin: 0 0 0.5rem 0;
+            }
+            .account-settings .user-profile h6.user-email {
+                margin: 0;
+                font-size: 0.8rem;
+                font-weight: 400;
+            }
+            .account-settings .about {
+                margin: 1rem 0 0 0;
+                font-size: 0.8rem;
+                text-align: center;
+            }
+            .card {
+                background: #ddd;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                border: 0;
+                margin-bottom: 1rem;
+            }
+            .form-control {
+                border: 1px solid #596280;
+                -webkit-border-radius: 2px;
+                -moz-border-radius: 2px;
+                border-radius: 2px;
+                font-size: .825rem;
+                background: #1A233A;
+                color: #bcd0f7;
+            }
+</style>
+<div class="container">
+            <div class="row gutters">
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="account-settings">
+                                <div class="user-profile">
+                                    <div class="user-avatar">
+                                        <img src="{{ avatar }}" alt="{{ firstname }} {{ lastname }}">
+                                    </div>
+                                    <h5 style="color:black"><strong>{{ firstname }} {{ lastname }}</strong></h5>
+                                    <h6 style="color:black">{{ email }}</h6>
+                                    <div class="role-selection">
+                                        <form action="/home" method="POST">
+                                            <!-- Drop-down menu -->
+                                            <label style="color: rgba(25,6,92,255)" for="roles">Roles: </label>
+                                            <select name="roles" id="roles">
+                                                {% for role_name in roles %}
+                                                    <option value="{{ role_name }}">{{ role_name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                            <input type="submit" value="Go">
+                                        </form>
+                                    </div>
+                                    <div class="logout-button">
+                                        <form action="/logout" method="POST">
+                                            <button type="submit" class="btn btn-primary">Logout</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <h4 style="color:rgba(25,6,92,255)"><strong>Personal Details</strong></h4>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <h6 style="color:black"><strong>Full Name</strong></h6>
+                                    <p style="color:black">{{ firstname }} {{ lastname }}</p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <h6 style="color:black"><strong>Email</strong></h6>
+                                    <p style="color:black">{{ email }}</p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <h6 style="color:black"><strong>Gender</strong></h6>
+                                    <p style="color:black">{{ gender }}</p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <h6 style="color:black"><strong>Age</strong></h6>
+                                    <p style="color:black">{{ age }}</p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <h6 style="color:black"><strong>Major</strong></h6>
+                                    <p style="color:black">{{ major }}</p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <h6 style="color:black"><strong>Address</strong></h6>
+                                    <p style="color:black">{{ address }}</p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <h6 style="color:black"><strong>Position</strong></h6>
+                                    <p style="color:black">{{ position }}</p>
+                                </div>
+                            </div>
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <a href="#requests"><h4 style="color:rgba(25,6,92,255)"><strong>Requests</strong></h4></a>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-dark">
+                                    <tr style="background-color:rgba(25,6,92,255)">
+                                        <th scope="col"> Request ID</th>
+                                        <th scope="col"> Sender Email</th>
+                                        <th scope="col"> Request Type</th>
+                                        <th scope="col"> Request Description</th>
+                                    </tr>
+                                    <tbody>
+                                    {% for request_id, sender_email, request_type, request_desc in requests %}
+                                        <tr style="background-color:white">
+                                            <td style="color:rgba(25,6,92,255)"> {{ request_id }} </td>
+                                            <td style="color:rgba(25,6,92,255)"> {{ sender_email }} </td>
+                                            <td style="color:rgba(25,6,92,255)"> {{ request_type }}</td>
+                                            <td style="color:rgba(25,6,92,255)"> {{ request_desc }} </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+</html>

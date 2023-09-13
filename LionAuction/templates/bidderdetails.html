@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Listing Details</title>
+    <link rel="icon" href="https://www.psu.edu/favicon.ico">
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- Changes the button color to match the theme -->
+    <style>
+        .btn-primary {
+            color: white;
+            background-color: rgba(25,6,92,255);
+        }
+    </style>
+</head>
+<body>
+<header class="marketplace-header">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: rgba(25,6,92,255);
+            paddin-bottom: 14px;
+        }
+
+        .topnav a {
+            float: left;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: rgba(25,6,92,255);
+        }
+
+        .topnav a.logo {
+            float: left;
+            padding: 0px;
+        }
+
+        .topnav a.logo:hover {
+            background-color: rgba(25,6,92,255);
+        }
+
+        .topnav input.submit {
+            background-color: rgba(25,6,92,255);
+            float: left;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav input.submit:hover {
+            background-color: #ddd;
+            color: rgba(25,6,92,255);
+        }
+    </style>
+    <div class="topnav">
+        <a href="/home" class="logo"><img src="static/LionAuctionLogoWhite.png" width="108" height="54"></a>
+        <form action="/browse" method="POST">
+            {% for parent_category, category_name in categories %}
+                <input type="submit" value="{{ category_name }}" name="category" class="submit">
+            {% endfor %}
+        </form>
+    </div>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .welcome {
+            overflow: hidden;
+            background-color: white;
+            padding: 14px 14px;
+        }
+    </style>
+    <div class="welcome">
+        <h4 style="color: rgba(25,6,92,255)" align="center">——Auction Listing Details——</h4>
+    </div>
+</header>
+<style>
+            .account-settings .user-profile {
+                margin: 0 0 1rem 0;
+                padding-bottom: 1rem;
+                text-align: center;
+            }
+            .account-settings .user-profile .user-avatar {
+                margin: 0 0 1rem 0;
+            }
+            .account-settings .user-profile .user-avatar img {
+                width: 90px;
+                height: 90px;
+                -webkit-border-radius: 100px;
+                -moz-border-radius: 100px;
+                border-radius: 100px;
+            }
+            .account-settings .user-profile h5.user-name {
+                margin: 0 0 0.5rem 0;
+            }
+            .account-settings .user-profile h6.user-email {
+                margin: 0;
+                font-size: 0.8rem;
+                font-weight: 400;
+            }
+            .account-settings .about {
+                margin: 1rem 0 0 0;
+                font-size: 0.8rem;
+                text-align: center;
+            }
+            .card {
+                background: #ddd;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                border: 0;
+                margin-bottom: 1rem;
+            }
+            .form-control {
+                border: 1px solid #596280;
+                -webkit-border-radius: 2px;
+                -moz-border-radius: 2px;
+                border-radius: 2px;
+                font-size: .825rem;
+                background: #1A233A;
+                color: #bcd0f7;
+            }
+</style>
+<div class="container">
+    <div class="row gutters">
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="account-settings">
+                                <div class="user-profile">
+                                    <div class="user-avatar">
+                                        <img src="{{ avatar }}" alt="{{ firstname }} {{ lastname }}">
+                                    </div>
+                                    <h5 style="color:black"><strong>{{ firstname }} {{ lastname }}</strong></h5>
+                                    <h6 style="color:black">{{ email }}</h6>
+                                    <h6 style="color:black"><strong>Average Rating:</strong> {{ rating }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <h4 style="color:rgba(25,6,92,255)"><strong>Listing Details</strong></h4>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <h6 style="color:black"><strong>Listing ID</strong></h6>
+                                    <p style="color:black">{{ listing_id }}</p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <h6 style="color:black"><strong>Category</strong></h6>
+                                    <p style="color:black">{{ category }}</p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <h6 style="color:black"><strong>Auction Title</strong></h6>
+                                    <p style="color:black">{{ auction_title }}</p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <h6 style="color:black"><strong>Product Name</strong></h6>
+                                    <p style="color:black">{{ product_name }}</p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <h6 style="color:black"><strong>Product Description</strong></h6>
+                                    <p style="color:black">{{ product_description }}</p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <h6 style="color:black"><strong>Quantity</strong></h6>
+                                    <p style="color:black">{{ quantity }}</p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <h6 style="color:black"><strong>Reserve Price</strong></h6>
+                                    <p style="color:black">{{ reserve_price }}</p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <h6 style="color:black"><strong>Maximum Bids</strong></h6>
+                                    <p style="color:black">{{ maximum_bids }}</p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <h6 style="color:black"><strong>Remaining Bids</strong></h6>
+                                    <p style="color:black">{{ remaining_bids }}</p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <h6 style="color:black"><strong>Status</strong></h6>
+                                    <p style="color:black">{{ status }}</p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <h6 style="color:black"><strong>Highest Bid</strong></h6>
+                                    <p style="color:black">{{ max_bid }}</p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <style>
+        .bidding .bidlabel {
+            color: black;
+        }
+
+        .bidding .bidinput {
+            color: #1A233A;
+        }
+
+        .bidding .bidsubmit {
+            color: white;
+            background-color: #1A233A;
+        }
+
+        .bidding .bidsubmit:hover {
+            background-color: #ddd;
+            color: #1A233A;
+        }
+    </style>
+                                    <div class="bidding">
+                                        <form action="/successful-bid" method="POST">
+                                          <label for="bid" class="bidlabel"><strong>Make Bid:</strong></label><br>
+                                          <input type="number" id="bidamt" name="bidamt" class="bidinput" min="{{ min_bid }}" maxlength="10" size="10"><br><br>
+                                            <!-- Button to trigger modal (confirmation pop-up window) -->
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bidModal">Bid</button>
+
+                                            <!-- Modal for insert button-->
+                                            <div class="modal fade" id="bidModal" tabindex="-1" role="dialog" aria-labelledby="bidModalTitle" aria-hidden="true">
+                                              <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                  <div class="modal-header">
+                                                    <h5 class="modal-title" id="bidModalTitle">Confirm Bidding</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                      <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                  </div>
+                                                  <div class="modal-body"><p>Are you sure you would like to make this bid?</p></div>
+                                                  <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                    <button type="submit" class="btn btn-primary">Bid</button>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+</html>
