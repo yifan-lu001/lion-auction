@@ -4,7 +4,12 @@ This project implements the complete functionality for the LionAuction project. 
 
 ## Installation
 
-Clone the repository and open the project folder in a supported environment, such as PyCharm Professional. There should be fifteen (15) functional files:
+Clone the repository and open the project folder in a supported environment, such as PyCharm Professional. 
+```
+git clone https://github.com/yifan-lu001/lion-auction.git
+```
+
+There should be fifteen (15) functional files:
 
 ```angular2html
 index.html
