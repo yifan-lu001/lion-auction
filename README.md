@@ -4,7 +4,7 @@ This project implements the complete functionality for the LionAuction project. 
 
 ## Installation
 
-Download the Yifan_Lu_LionAuction.zip file and open the project in a supported environment, such as PyCharm Professional. There should be fifteen (15) functional files:
+Clone the repository and open the project folder in a supported environment, such as PyCharm Professional. There should be fifteen (15) functional files:
 
 ```angular2html
 index.html
@@ -64,5 +64,5 @@ This page will only appear if the user tries to enter a page that they are not p
 
 ## Authors
 
-This project was created by Yifan Lu (yifan@psu.edu) for Mr. Dude, with guidance from the CMPSC 431W teaching team at Penn State University.
+This project was created by Yifan Lu (yifan.lu001@gmail.com), with guidance from the CMPSC 431W course at Penn State University.
 
